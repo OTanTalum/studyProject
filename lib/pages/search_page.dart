@@ -31,7 +31,6 @@ class _SearchPageState extends State<SearchPage>{
            mainAxisAlignment: MainAxisAlignment.center,
             children: [
              TextField(
-               controller: ,
              )
             ]),
       ),

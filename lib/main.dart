@@ -31,33 +31,37 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String name = "Vasya";
+  double cytrus=90;
+  int book = 3;
+  double ocytrus = 90;
+  bool ded = false;
+
+  func(){
+  setState(() {
+    ocytrus = cytrus;
+    cytrus=cytrus/book;
+  });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(name),
+        actions: [
+          IconButton(icon: Icon(Icons.ac_unit_sharp ) , onPressed:()=> func())
+        ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline2,
-            ),
+        child:Column(
+          children: [
+            Text(cytrus.toString()),
+            Text(ocytrus.toString())
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => SearchPage())),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
