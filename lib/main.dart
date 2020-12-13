@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:study_project/pages/search_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,17 +32,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String name = "Vasya";
-  double cytrus=90;
-  int book = 3;
-  double ocytrus = 90;
-  bool ded = false;
+  String name = "KVV.project";
+  List <String> listOfString = ["Ivan", "Petro", "Maria", "Andrei", "Katja", 'Aleg'];
+  List <Widget> list =[];
+
 
   func(){
   setState(() {
-    ocytrus = cytrus;
-    cytrus=cytrus/book;
+    listOfString.forEach((element) {
+      list.add(
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            height: 200,
+            width: 150,
+            color: Colors.black12,
+            child:  Padding(
+              padding: const EdgeInsets.only(top: 85),
+              child: Text(element,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.vampiroOne(
+                textStyle:TextStyle(
+                  color: Colors.lightBlue,
+              ),
+                ),
+              ),
+            ),
+          ),
+        )
+      );
+    });
+  //list.add(listOfString.where((element) => element.contains('a')));
+
+
   });
   }
 
@@ -51,15 +75,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(name),
         actions: [
-          IconButton(icon: Icon(Icons.ac_unit_sharp ) , onPressed:()=> func())
+          IconButton(icon: Icon(Icons.add_box_sharp ) , onPressed:()=> func())
         ],
       ),
       body: Center(
-        child:Column(
-          children: [
-            Text(cytrus.toString()),
-            Text(ocytrus.toString())
-          ],
+        child:SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Wrap(children: list,),
+              // GestureDetector(
+              //   onTap: ()=>func(),
+              //   child: Icon(Icons.adb_outlined, size: 400,),
+              // ),
+            ],
+          ),
         ),
       ),
     );
